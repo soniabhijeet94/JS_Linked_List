@@ -21,6 +21,53 @@ class LL {
 		}
 	}
 
+
+	//add_to_end()
+
+	add_to_end(num) {
+		let node = new Node(num);		
+		if(this.head === null) {
+			this.head = node;
+			this.size++;
+		}
+		else {
+			let curr = this.head;
+
+			while(curr.next) curr = curr.next;
+			curr.next = node;
+			this.size++;
+
+		}
+	}
+
+
+	//add_to_pos()
+
+	add_to_pos(num, pos) {
+		let node = new Node(num);		
+		if(this.head === null) {
+			this.head = node;
+			this.size++;
+		}
+		else {
+			let curr = this.head;
+			let prev = null;
+			let i = 0;
+
+			while(curr.next && i < pos-1) {
+				prev = curr;
+				curr = curr.next;
+				i++;
+			}
+
+			prev.next = node;
+			node.next = curr;
+			this.size++;
+		}
+	}
+
+
+	//print the list
 	print_list() {
 		if(this.size === 0) 
 			console.log("List is empty...");
