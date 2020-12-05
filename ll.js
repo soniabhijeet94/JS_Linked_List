@@ -67,6 +67,134 @@ class LL {
 	}
 
 
+	//find_node() => assume:in case of repetition, return the first position
+
+	find_node(val) {
+		
+		if(!this.size) {
+			console.log("List is empty...");
+			return -1;
+		}
+		else {
+
+			let curr = this.head;
+			let found = false, pos = 0;
+			while(curr) {
+				if(curr.num === val) {
+					found = true;
+					break;
+				}
+				curr = curr.next;
+				pos++;
+			}
+
+			if(found) {
+				console.log(`Node with data ${val} is found at ${pos+1}.`);
+				return pos+1;
+			}
+			else {
+				console.log("Done searching, node not found with requested data. Try again.");
+				return -1;
+			}
+		}
+	}
+
+
+	//remove_from_start()
+
+	remove_from_start() {
+		if(this.size === 0) console.log("List is empty...");
+
+		else if(this.size === 1){
+			this.head = null;
+			this.size--;
+		} 
+
+		else {
+			let curr = this.head;
+			curr = curr.next;
+			this.head = curr;
+			this.size--;
+		}
+
+	}
+
+
+	//remove_from_end()
+
+	remove_from_end() {
+		if(this.size === 0) console.log("List is empty...");
+
+		else if(this.size === 1){
+			this.head = null;
+			this.size--;
+		} 
+
+		else {
+			let curr = this.head;
+			let prev = null;
+			while(curr && curr.next) {
+				prev = curr;
+				curr = curr.next;
+			}
+
+			prev.next = null;
+			this.size--;
+		}
+
+	}
+
+
+	//remove_from_pos()
+
+	remove_from_pos(pos) {
+		if(this.size === 0) console.log("List is empty...");
+
+		else if(this.size === 1){
+			if(pos === 1) {
+				this.head = null;
+				this.size--;				
+			} else {
+				console.log("Position not available in list.")
+			}
+		} 
+
+		else {
+			let curr = this.head;
+			let prev = null;
+			let i = 0;
+
+			while(curr && i < pos-1) {
+				prev = curr;
+				curr = curr.next;
+				i++;
+			}
+
+			if(i !== pos-1)
+				console.log("Position not available in list.")
+			else {
+				prev.next = curr.next;
+				this.size--;
+			}
+		}
+	}
+
+
+	//find_and_remove()
+
+	find_and_remove(val) {
+		if(this.size === 0) console.log("List is empty...");
+
+		else {
+			let pos = this.find_node(val);
+
+			if(pos === -1) console.log("Node not found in the list.");
+			
+			else this.remove_from_pos(pos);			
+		}
+	}
+
+
 	//print the list
 	print_list() {
 		if(this.size === 0) 
