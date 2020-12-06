@@ -70,3 +70,36 @@ console.log("Find & remove node with data 45:")
 obj.find_and_remove(45);
 obj.print_list();
 
+console.log();
+console.log("Print current list size:")
+obj.length();
+obj.print_list();
+
+console.log();
+console.log("Is the list empty? " + obj.isEmpty());
+obj.print_list();
+
+console.log();
+console.log("Index of element 45 is:" + obj.indexOf(45));
+obj.print_list();
+
+console.log();
+console.log("Add 123 to pos 2: ")
+obj.add_to_pos(123, 2);
+obj.print_list();
+
+console.log();
+console.log("Remove all elements from the list: ");
+obj.removeAll();
+obj.print_list();
+
+console.log();
+console.log("Add 115 to pos 5: ")
+obj.add_to_pos(123, 5);
+obj.print_list();
+
+console.log();
+console.log("Add 115 to start: ")
+obj.add_to_start(115);
+obj.print_list();
+

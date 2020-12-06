@@ -45,9 +45,8 @@ class LL {
 
 	add_to_pos(num, pos) {
 		let node = new Node(num);		
-		if(this.head === null) {
-			this.head = node;
-			this.size++;
+		if(this.size <= pos) {
+			console.log("Position not available in the list.");
 		}
 		else {
 			let curr = this.head;
@@ -195,7 +194,36 @@ class LL {
 	}
 
 
-	//print the list
+	/* Few HELPERS */
+
+	//length()
+
+	length() {
+		console.log("List size is: " + this.size);
+	}
+
+	//isEmpty()
+
+	isEmpty() {
+		return this.size === 0;
+	}
+
+	//indexOf()
+
+	indexOf(val) {
+		return this.find_node(val) - 1;
+	}
+
+	//removeAll()
+
+	removeAll() {
+		this.head = null;
+		this.size = 0;
+	}
+
+
+	//print_list()
+
 	print_list() {
 		if(this.size === 0) 
 			console.log("List is empty...");
@@ -204,14 +232,14 @@ class LL {
 			console.log("Printing the list...");
 
 			if(curr.next === null)
-				console.log("LIST::  -> " + curr.num);
+				console.log("LIST:: (HEAD) " + curr.num + " -> (NULL)");
 			else{
 				let list = "";
 				while(curr) {
-					list += " -> " + curr.num;
+					list += curr.num + " -> ";
 					curr = curr.next;
 				}
-				console.log("LIST:: " + list);
+				console.log("LIST:: (HEAD) " + list + "(NULL)");
 			}
 		}
 	}
